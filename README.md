@@ -1,70 +1,158 @@
-# Getting Started with Create React App
+## Installation
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Clone the repository and install dependencies:
 
-## Available Scripts
+```bash
+npm install
+Run the project:
 
-In the project directory, you can run:
+npm run dev
+Installing Redux Toolkit (RTK)
+To install Redux Toolkit and React Redux:
 
-### `npm start`
+npm install @reduxjs/toolkit react-redux
+What is Redux / Redux Toolkit (RTK)?
+Inside a component, we usually use useState() to manage state.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+When we need to share state between multiple components:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+We pass data from parent to child using props
 
-### `npm test`
+Then the child sends it again to another child
+This becomes props drilling
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+As the project grows, this becomes a problem.
 
-### `npm run build`
+Examples of data needed everywhere:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Login information (user / token)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Language (TR / EN)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Theme, modal, notifications, etc.
 
-### `npm run eject`
+When props are no longer enough, we need Global State Management.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+That’s where Redux Toolkit (RTK) comes in.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Redux helps us keep important application data in one central place.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+This central place is called the Store.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+What is the Store?
+The store is like the RAM of the application
 
-## Learn More
+All global state is stored here
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Every part of the app can access it
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Single Source of Truth
+Redux has an important rule:
 
-### Code Splitting
+All global state should live in one place → the store.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+What is a Slice?
+A slice is a part of the store.
 
-### Analyzing the Bundle Size
+Think of a slice as a mini package for each feature:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+counterSlice
 
-### Making a Progressive Web App
+authSlice
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+themeSlice
 
-### Advanced Configuration
+languageSlice
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+A slice includes 3 main things:
 
-### Deployment
+1) Initial State
+The starting data:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+initialState: { value: 0 }
+2) Reducers
+Functions that describe how state changes.
 
-### `npm run build` fails to minify
+3) Actions
+Commands generated automatically to trigger reducers.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Important note:
+
+The reducer name and action name are the same.
+
+Example: increment reducer → increment() action.
+
+What is Dispatch?
+dispatch means: sending a command to the store.
+
+Example:
+
+dispatch(increment());
+What happens here?
+
+increment() creates an action object
+
+dispatch sends this action to the store
+
+The store finds the related reducer
+
+The reducer updates the state
+
+React detects the change and re-renders the UI
+
+What is useSelector?
+useSelector means: reading data from the store.
+
+Example:
+
+const count = useSelector((state) => state.counter.value);
+This means:
+
+Go to the store
+
+Access the counter slice
+
+Read the value state
+
+Redux Data Flow (Cycle)
+Redux follows a predictable flow:
+
+UI event (button click)
+
+dispatch(action)
+
+Store receives action
+
+Reducer updates state
+
+UI re-renders automatically
+
+Example:
+
+Button click → dispatch(increment()) → reducer updates state → UI shows new count
+
+Project Features
+Increment / Decrement counter
+
+Reset counter
+
+Increase by custom amount
+
+Decrease by custom amount
+
+Clean modern UI design
+
+Tech Stack
+React
+
+Redux Toolkit
+
+React Redux
+
+CSS (Modern UI)
+
+Notes
+This project was created as a practice example to learn and demonstrate the Redux Toolkit fundamentals.
+
+To save time, the UI/UX styling was assisted by ChatGPT, allowing me to focus on Redux Toolkit logic and state management.
+```
