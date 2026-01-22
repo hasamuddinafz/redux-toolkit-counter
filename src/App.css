@@ -1,38 +1,158 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Inter, Arial, sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  min-height: 100vh;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+/* Main Layout */
+.app {
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  padding: 20px;
+}
+
+/* Card */
+.card {
+  width: 100%;
+  max-width: 420px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  border-radius: 18px;
+  padding: 30px 24px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.title {
+  font-size: 22px;
+  font-weight: 700;
+  text-align: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.subtitle {
+  margin-top: 6px;
+  font-size: 13px;
+  opacity: 0.8;
+  text-align: center;
+}
+
+/* Count Box */
+.countBox {
+  margin-top: 22px;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 18px;
+  border-radius: 14px;
+  text-align: center;
+}
+
+.countText {
+  display: block;
+  font-size: 48px;
+  font-weight: 800;
+  margin-bottom: 5px;
+}
+
+.countLabel {
+  font-size: 12px;
+  opacity: 0.75;
+}
+
+/* Buttons */
+.btnGroup {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.btn {
+  flex: 1;
+  padding: 12px 10px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.25s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.95;
+}
+
+.primary {
+  background: linear-gradient(135deg, #2563eb, #3b82f6);
+  color: white;
+}
+
+.danger {
+  background: linear-gradient(135deg, #dc2626, #ef4444);
+  color: white;
+}
+
+.gray {
+  background: rgba(255, 255, 255, 0.12);
+  color: white;
+}
+
+/* Form Section */
+.formSection {
+  margin-top: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.inputBox label {
+  font-size: 12px;
+  opacity: 0.85;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.inputRow {
+  display: flex;
+  gap: 10px;
+}
+
+input {
+  flex: 1;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  outline: none;
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+}
+
+input:focus {
+  border-color: rgba(59, 130, 246, 0.9);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
+}
+
+.btn.small {
+  flex: 0;
+  padding: 12px 16px;
+}
+
+/* Footer */
+.footerText {
+  margin-top: 18px;
+  font-size: 12px;
+  opacity: 0.75;
+  text-align: center;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
